@@ -1,0 +1,302 @@
+{
+ "listings": [
+  {
+   "id": "ebay-wd60efrx",
+   "store": "eBay",
+   "drive": "WD Red 6TB (NAS)",
+   "model": "WD60EFRX",
+   "seller": "kl0 (99.5%)",
+   "url": "https://www.ebay.com/itm/226010921403",
+   "warranty": "Not listed",
+   "baseline": 179.99,
+   "previous": 179.99,
+   "current": 179.99,
+   "stars": 5.0,
+   "ratings": 69,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "ebay-wd60purx",
+   "store": "eBay",
+   "drive": "WD Purple 6TB (Surveillance)",
+   "model": "WD60PURX",
+   "seller": "kl0 (99.5%)",
+   "url": "https://www.ebay.com/itm/226316167806",
+   "warranty": "Not listed",
+   "baseline": 169.99,
+   "previous": 169.99,
+   "current": 169.99,
+   "stars": 5.0,
+   "ratings": 45,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "ebay-st6000nm0024",
+   "store": "eBay",
+   "drive": "Seagate Enterprise 6TB",
+   "model": "ST6000NM0024",
+   "seller": "kl0 (99.5%)",
+   "url": "https://www.ebay.com/itm/226058458376",
+   "warranty": "Not listed",
+   "baseline": 159.99,
+   "previous": 159.99,
+   "current": 159.99,
+   "stars": 4.5,
+   "ratings": 14,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "ebay-wd6001fsyz",
+   "store": "eBay",
+   "drive": "WD Enterprise 6TB",
+   "model": "WD6001FSYZ",
+   "seller": "kl0 (99.5%)",
+   "url": "https://www.ebay.com/itm/227534622270",
+   "warranty": "Not listed",
+   "baseline": 169.99,
+   "previous": 169.99,
+   "current": 169.99,
+   "stars": 5.0,
+   "ratings": 7,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "ebay-st6000dx000",
+   "store": "eBay",
+   "drive": "Seagate Desktop 6TB",
+   "model": "ST6000DX000",
+   "seller": "kl0 (99.5%)",
+   "url": "https://www.ebay.com/itm/227474837188",
+   "warranty": "Not listed",
+   "baseline": 148.99,
+   "previous": 148.99,
+   "current": 148.99,
+   "stars": 5.0,
+   "ratings": 3,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "ebay-hus726060ale614",
+   "store": "eBay",
+   "drive": "Dell/HGST Ultrastar 7K6000 6TB",
+   "model": "HUS726060ALE614",
+   "seller": "serverpartdeals (99.9%)",
+   "url": "https://www.ebay.com/itm/307157427090",
+   "warranty": "2 years",
+   "baseline": 179.0,
+   "previous": 179.0,
+   "current": 179.0,
+   "stars": 5.0,
+   "ratings": 1,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "ebay-hus726060ale610",
+   "store": "eBay",
+   "drive": "HGST Ultrastar 6TB",
+   "model": "HUS726060ALE610",
+   "seller": "kl0 (99.5%)",
+   "url": "https://www.ebay.com/itm/226188996706",
+   "warranty": "Not listed",
+   "baseline": 149.99,
+   "previous": 149.99,
+   "current": 149.99,
+   "stars": 5.0,
+   "ratings": 1,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "spd-hus726060ale614",
+   "store": "ServerPartDeals",
+   "drive": "Dell/HGST Ultrastar 7K6000 6TB",
+   "model": "HUS726060ALE614",
+   "seller": "ServerPartDeals (direct)",
+   "url": "https://serverpartdeals.com/products/dell-hgst-ultrastar-7k6000-hus726060ale614-0f23082-6tb-7-2k-rpm-sata-6gb-s-512e-128mb-3-5-refurbished-hdd",
+   "warranty": "2 years",
+   "baseline": 169.0,
+   "previous": 169.0,
+   "current": 169.0,
+   "stars": null,
+   "ratings": 0,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "spd-mg04aca600e",
+   "store": "ServerPartDeals",
+   "drive": "Dell/Toshiba MG04ACA 6TB",
+   "model": "MG04ACA600E",
+   "seller": "ServerPartDeals (direct)",
+   "url": "https://serverpartdeals.com/products/dell-toshiba-mg04aca-mg04aca600e-6tb-7-2k-rpm-sata-6gb-s-512e-128mb-3-5-refurbished-hdd",
+   "warranty": "2 years",
+   "baseline": 165.0,
+   "previous": 165.0,
+   "current": 165.0,
+   "stars": null,
+   "ratings": 0,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "spd-0kp22d-g14",
+   "store": "ServerPartDeals",
+   "drive": "Dell G14 0KP22D 6TB",
+   "model": "0KP22D",
+   "seller": "ServerPartDeals (direct)",
+   "url": "https://serverpartdeals.com/products/dell-g14-0kp22d-6tb-7-2k-rpm-sata-6gb-s-512e-128mb-3-5-refurbished-hdd",
+   "warranty": "2 years",
+   "baseline": 165.0,
+   "previous": 165.0,
+   "current": 165.0,
+   "stars": null,
+   "ratings": 0,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "newegg-1h217z",
+   "store": "Newegg",
+   "drive": "Seagate 6TB 1H217Z-300",
+   "model": "1H217Z-300",
+   "seller": "Newegg marketplace",
+   "url": "https://www.newegg.com/p/1Z4-002P-027K0",
+   "warranty": "Not listed",
+   "baseline": 175.1,
+   "previous": 175.1,
+   "current": 175.1,
+   "stars": null,
+   "ratings": 0,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "newegg-hus726060ale614",
+   "store": "Newegg",
+   "drive": "Dell/HGST Ultrastar 7K6000 6TB",
+   "model": "HUS726060ALE614",
+   "seller": "Newegg marketplace",
+   "url": "https://www.newegg.com/dell-hgst-ultrastar-7k6000-hus726060ale614-6tb-7200-rpm/p/1Z4-000J-055M8",
+   "warranty": "Not listed",
+   "baseline": 179.0,
+   "previous": 179.0,
+   "current": 179.0,
+   "stars": null,
+   "ratings": 0,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "newegg-0kp22d-g14",
+   "store": "Newegg",
+   "drive": "Dell G14 0KP22D 6TB",
+   "model": "0KP22D",
+   "seller": "Newegg marketplace",
+   "url": "https://www.newegg.com/dell-generation-14-0kp22d-6tb-7200-rpm/p/1Z4-000J-055M5",
+   "warranty": "Not listed",
+   "baseline": 175.0,
+   "previous": 175.0,
+   "current": 175.0,
+   "stars": null,
+   "ratings": 0,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  },
+  {
+   "id": "bestbuy-wd60ezax",
+   "store": "Best Buy",
+   "drive": "WD Blue 6TB (NEW, watch only)",
+   "model": "WD60EZAX",
+   "seller": "Best Buy",
+   "url": "https://www.bestbuy.com/product/wd-blue-6tb-pc-internal-hard-drive-for-desktops/JXTHCC79K9",
+   "warranty": "Manufacturer",
+   "baseline": 249.99,
+   "previous": 249.99,
+   "current": 249.99,
+   "stars": 4.4,
+   "ratings": 100,
+   "status": "Active",
+   "checked": "2026-11-08T23:40:00Z"
+  }
+ ],
+ "history": [
+  {
+   "date": "2026-11-08",
+   "id": "ebay-wd60efrx",
+   "price": 179.99
+  },
+  {
+   "date": "2026-11-08",
+   "id": "ebay-wd60purx",
+   "price": 169.99
+  },
+  {
+   "date": "2026-11-08",
+   "id": "ebay-st6000nm0024",
+   "price": 159.99
+  },
+  {
+   "date": "2026-11-08",
+   "id": "ebay-wd6001fsyz",
+   "price": 169.99
+  },
+  {
+   "date": "2026-11-08",
+   "id": "ebay-st6000dx000",
+   "price": 148.99
+  },
+  {
+   "date": "2026-11-08",
+   "id": "ebay-hus726060ale614",
+   "price": 179.0
+  },
+  {
+   "date": "2026-11-08",
+   "id": "ebay-hus726060ale610",
+   "price": 149.99
+  },
+  {
+   "date": "2026-11-08",
+   "id": "spd-hus726060ale614",
+   "price": 169.0
+  },
+  {
+   "date": "2026-11-08",
+   "id": "spd-mg04aca600e",
+   "price": 165.0
+  },
+  {
+   "date": "2026-11-08",
+   "id": "spd-0kp22d-g14",
+   "price": 165.0
+  },
+  {
+   "date": "2026-11-08",
+   "id": "newegg-1h217z",
+   "price": 175.1
+  },
+  {
+   "date": "2026-11-08",
+   "id": "newegg-hus726060ale614",
+   "price": 179.0
+  },
+  {
+   "date": "2026-11-08",
+   "id": "newegg-0kp22d-g14",
+   "price": 175.0
+  },
+  {
+   "date": "2026-11-08",
+   "id": "bestbuy-wd60ezax",
+   "price": 249.99
+  }
+ ],
+ "lastCheck": "2026-11-08T23:40:00Z",
+ "lastChanges": []
+}

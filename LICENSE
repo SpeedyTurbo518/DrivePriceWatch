@@ -1,0 +1,47 @@
+Drive Price Watch Proprietary License
+
+Copyright (c) 2026 STG Studios. All rights reserved.
+
+This repository, including all source code, graphics, text, and
+compiled application files (together, the "Software"), is the
+property of STG Studios.
+
+1. PERMITTED USE
+   You may:
+   a) view and read the source code in this repository; and
+   b) download the official APK files published on this repository's
+      Releases page and install them on devices you own, for your own
+      personal, non-commercial use.
+
+2. RESTRICTIONS
+   Without prior written permission from STG Studios, you may not:
+   a) copy, modify, adapt, translate, or create derivative works of the
+      Software, in whole or in part;
+   b) distribute, publish, sublicense, sell, rent, lease, or otherwise make
+      the Software or any modified version available to others, including
+      by re-uploading APK files or publishing builds made from this code;
+   c) remove, alter, or hide any copyright, trademark, or license notice;
+   d) use the name "Drive Price Watch", the STG Studios name, or the app's icons or
+      branding for any other app, product, or service; or
+   e) use the Software, or any part of it, for commercial purposes.
+
+   Forking this repository on GitHub is allowed only as far as GitHub's
+   Terms of Service require for public repositories. A fork grants no
+   additional rights under this License.
+
+3. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+4. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL STG STUDIOS BE LIABLE FOR ANY CLAIM, DAMAGES, INJURY, OR
+   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE,
+   ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR ITS USE.
+
+5. TERMINATION
+   Your permission to use the Software ends automatically if you break any
+   term of this License. When it ends, you must stop using and delete all
+   copies of the Software in your possession.
+
+For permission requests, open an issue on this repository.

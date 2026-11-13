@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drive Price Watch</title>
+<style>
+:root{--bg:#faf9f5;--panel:#fff;--fg:#1f1e1d;--muted:#6b6a66;--line:#e5e3dc;--ok:#2f7d4f;--bad:#b3261e;--warn:#9a6b00;--acc:#c96442;
+--c0:#3b6fd4;--c1:#2f9e6b;--c2:#d9822b;--c3:#b04fbf}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1b19;--panel:#262523;--fg:#f0eee8;--muted:#a3a19b;--line:#3a3935;--ok:#6fcf97;--bad:#ff8a80;--warn:#f2c14e;--acc:#e08a6a;
+--c0:#7aa2ff;--c1:#5fd3a0;--c2:#ffb066;--c3:#d58ae0}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:16px}
+h1{font:400 28px/1.2 Georgia,"Times New Roman",serif;margin:0}
+.lede{color:var(--muted);margin:6px 0 0}.lede b{color:var(--fg)}
+.top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.badge{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+button{font:inherit;font-weight:600;border:0;border-radius:8px;padding:8px 14px;background:var(--acc);color:#fff;cursor:pointer}
+button:disabled{opacity:.6;cursor:default}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.lab,.sub,.note{font-size:12px;color:var(--muted)}.num{font:400 26px Georgia,serif;margin-top:4px;font-variant-numeric:tabular-nums}
+h2{font-size:17px;font-weight:600;margin:0}.note{margin:4px 0 12px}
+select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--fg)}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chart{position:relative}.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-bottom:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+svg text{fill:var(--muted);font-size:11px}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.15);padding:6px 9px;font-size:12px;max-width:260px}
+.tw{max-height:560px;overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th{position:sticky;top:0;background:var(--panel);text-align:left;font-weight:600;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}.r{text-align:right}
+.up{color:var(--bad)}.down{color:var(--ok)}.over{color:var(--warn)}a{color:inherit}
+.changes{border-left:3px solid var(--acc)}.changes ul{margin:6px 0 0;padding-left:18px;font-size:13px}
+.ss{display:none}@media (max-width:560px){.hs{display:none}.ss{display:block}table{font-size:12px}th,td{padding:5px 4px}th{white-space:normal}.wrap{padding:10px}.card{padding:12px}}
+</style></head><body><div class="wrap">
+<header><h1>Drive Price Watch</h1>
+<p class="lede">Refurbished 6TB SATA drives under $200 across eBay, ServerPartDeals, Newegg and Best Buy. Cheapest: <b id="lowD">—</b> at <b id="lowP">—</b>.</p>
+<div class="top"><button id="check">Check prices now</button><span class="badge" id="snap">Loading…</span></div></header>
+<section class="card changes" id="chg" hidden><h2>Changes at the last check</h2><ul id="chgList"></ul></section>
+<section class="tiles">
+<div class="card"><div class="lab">Lowest price</div><div class="num" id="t1">—</div><div class="sub" id="t1s">—</div></div>
+<div class="card"><div class="lab">Under $200 and rated 3.5★+</div><div class="num" id="t2">—</div><div class="sub">listings</div></div>
+<div class="card"><div class="lab">Price changes, last check</div><div class="num" id="t3">—</div><div class="sub">up or down</div></div>
+<div class="card"><div class="lab">Listings tracked</div><div class="num" id="t4">—</div><div class="sub" id="t4s">—</div></div>
+</section>
+<div class="bar"><label class="lab" for="store">Store</label><select id="store"><option value="">All stores</option><option>eBay</option><option>ServerPartDeals</option><option>Newegg</option><option>Best Buy</option></select></div>
+<section class="card"><h2>Price history</h2><p class="note">Daily price per listing, colored by store. Dashed line = $200 limit.</p><div class="chart" id="chart"></div></section>
+<section class="card"><h2>All tracked listings</h2><p class="note">Tap a column header to sort. Red = price up, green = down.</p>
+<div class="tw"><table><thead><tr>
+<th class="hs" data-k="store">Store</th><th data-k="drive">Drive</th><th class="r" data-k="current">Price</th><th class="r" data-k="vsPrev">vs last check</th><th class="r hs" data-k="vsBase">vs Nov 8</th><th class="r" data-k="stars">Stars</th><th class="hs" data-k="status">Status</th><th class="hs" data-k="warranty">Warranty</th><th>Link</th>
+</tr></thead><tbody id="tb"></tbody></table></div></section>
+<details class="card"><summary>About</summary><p class="note">Works offline with the last saved prices. When you're online it checks each store page directly once a day (12:45 PM) through Nov 25, 2026, and notifies you when any price goes up or down. "Unrated" = the store shows no product reviews. Best Buy's WD Blue is new (not refurbished) and over $200; it's tracked only in case it drops.</p></details>
+</div>
+<script>
+const LIMIT=200,STORES=['eBay','ServerPartDeals','Newegg','Best Buy'];
+const col=s=>getComputedStyle(document.documentElement).getPropertyValue('--c'+STORES.indexOf(s)).trim();
+const money=v=>v==null||isNaN(v)?'—':'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const signed=v=>v==null||isNaN(v)?'—':v===0?'$0.00':(v>0?'+':'−')+money(Math.abs(v));
+const fmtDate=s=>s?new Date(s).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'never';
+let D=null,rows=[],store='',sortK='current',sortDir=1;
+const Bridge={
+ async load(){ if(window.Android) return JSON.parse(Android.getData()); const r=await fetch('/api/data',{cache:'no-store'}); return r.json(); },
+ async check(){ if(window.Android){ Android.checkNow(); return null; } const r=await fetch('/api/check',{method:'POST'}); return r.json(); },
+ open(u){ if(window.Android) Android.openUrl(u); else window.open(u,'_blank','noopener'); }
+};
+function prep(){rows=D.listings.map(p=>({...p,vsPrev:p.previous!=null&&p.current!=null?Math.round((p.current-p.previous)*100)/100:null,vsBase:p.baseline!=null&&p.current!=null?Math.round((p.current-p.baseline)*100)/100:null}));}
+function summary(){const a=rows.filter(r=>r.status!=='Ended'&&r.current!=null);const low=a.reduce((m,r)=>!m||r.current<m.current?r:m,null);
+ t1.textContent=money(low&&low.current);t1s.textContent=low?low.drive+' · '+low.store:'—';lowD.textContent=low?low.drive+' ('+low.store+')':'—';lowP.textContent=money(low&&low.current);
+ t2.textContent=a.filter(r=>r.current<=LIMIT&&r.stars!=null&&r.stars>=3.5).length;t3.textContent=rows.filter(r=>r.vsPrev).length;t4.textContent=rows.length;
+ const failed=rows.filter(r=>r.status==='Check failed').length;t4s.textContent=failed?failed+' couldn\'t be checked':'4 stores';
+ snap.textContent='Last checked '+fmtDate(D.lastCheck);
+ const ch=D.lastChanges||[];chg.hidden=!ch.length;chgList.replaceChildren(...ch.map(t=>{const li=document.createElement('li');li.textContent=t;return li;}));}
+function table(){const tb=document.getElementById('tb');tb.replaceChildren();
+ const list=rows.filter(r=>!store||r.store===store).slice().sort((a,b)=>{let x=a[sortK],y=b[sortK];if(x==null)return 1;if(y==null)return -1;return (typeof x==='number'?x-y:String(x).localeCompare(y))*sortDir;});
+ for(const r of list){const tr=document.createElement('tr');const td=(t,c)=>{const e=document.createElement('td');e.textContent=t;if(c)e.className=c;tr.appendChild(e);};
+  td(r.store,'hs');{const e=document.createElement('td'),a=document.createElement('div'),b=document.createElement('div');a.textContent=r.drive+' · '+r.model;b.className='sub ss';b.textContent=r.store;e.append(a,b);tr.appendChild(e);}td(money(r.current),'r'+(r.current>LIMIT?' over':''));
+  td(signed(r.vsPrev),'r'+(r.vsPrev>0?' up':r.vsPrev<0?' down':''));td(signed(r.vsBase),'r hs'+(r.vsBase>0?' up':r.vsBase<0?' down':''));
+  td(r.stars==null?'Unrated':Number(r.stars).toFixed(1)+'★ ('+r.ratings+')','r');td(r.status,'hs'+(r.status!=='Active'?' up':''));td(r.warranty,'hs');
+  const l=document.createElement('td'),a=document.createElement('a');a.href='#';a.textContent='Open';a.onclick=e=>{e.preventDefault();Bridge.open(r.url);};l.appendChild(a);tr.appendChild(l);tb.appendChild(tr);}}
+document.querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sortDir=sortK===k?-sortDir:1;sortK=k;table();});
+const NS='http://www.w3.org/2000/svg';const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+function chart(){const box=document.getElementById('chart');box.replaceChildren();if(!D)return;
+ const meta=Object.fromEntries(D.listings.map(l=>[l.id,l]));
+ const h=D.history.filter(r=>meta[r.id]&&(!store||meta[r.id].store===store)).map(r=>({...r,store:meta[r.id].store,label:meta[r.id].drive+' ('+meta[r.id].store+')',t:Date.parse(r.date+'T12:00:00Z')}));if(!h.length)return;
+ const lg=document.createElement('div');lg.className='legend';STORES.filter(s=>h.some(r=>r.store===s)).forEach(s=>{const sp=document.createElement('span'),i=document.createElement('i');i.style.background=col(s);sp.append(i,s);lg.appendChild(sp);});box.appendChild(lg);
+ const W=Math.max(280,box.clientWidth),H=260,m={t:10,r:16,b:26,l:52};
+ const ts=[...new Set(h.map(r=>r.t))].sort((a,b)=>a-b);let x0=ts[0],x1=ts[ts.length-1];if(x0===x1){x0-=864e5;x1+=864e5;}
+ let lo=Math.min(...h.map(r=>r.price),LIMIT)-10,hi=Math.max(...h.map(r=>r.price),LIMIT)+10;const st=Math.max(10,Math.ceil((hi-lo)/5/10)*10);lo=Math.floor(lo/st)*st;hi=Math.ceil(hi/st)*st;
+ const X=t=>m.l+(t-x0)/(x1-x0)*(W-m.l-m.r),Y=v=>H-m.b-(v-lo)/(hi-lo)*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:'100%'});
+ for(let v=lo;v<=hi;v+=st){svg.appendChild(el('line',{x1:m.l,x2:W-m.r,y1:Y(v),y2:Y(v),stroke:'var(--line)'}));const tx=el('text',{x:m.l-8,y:Y(v)+4,'text-anchor':'end'});tx.textContent='$'+v;svg.appendChild(tx);}
+ const step=Math.max(1,Math.ceil(ts.length/Math.max(1,Math.floor((W-m.l)/70))));ts.forEach((t,i)=>{if(i%step)return;const tx=el('text',{x:X(t),y:H-6,'text-anchor':'middle'});tx.textContent=new Date(t).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});svg.appendChild(tx);});
+ svg.appendChild(el('line',{x1:m.l,x2:W-m.r,y1:Y(LIMIT),y2:Y(LIMIT),stroke:'var(--muted)','stroke-dasharray':'4 4'}));
+ const by={};h.forEach(r=>(by[r.id]=by[r.id]||[]).push(r));
+ for(const id in by){const v=by[id].sort((a,b)=>a.t-b.t),c=col(v[0].store);
+  if(v.length>1)svg.appendChild(el('path',{d:v.map((r,i)=>(i?'L':'M')+X(r.t)+','+Y(r.price)).join(''),fill:'none',stroke:c,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round',opacity:.85}));
+  v.forEach(r=>svg.appendChild(el('circle',{cx:X(r.t),cy:Y(r.price),r:3,fill:c})));}
+ const rule=el('line',{y1:m.t,y2:H-m.b,stroke:'var(--muted)',opacity:0});svg.appendChild(rule);
+ const tip=document.createElement('div');tip.className='tip';tip.hidden=true;
+ const hit=el('rect',{x:m.l,y:m.t,width:W-m.l-m.r,height:H-m.t-m.b,fill:'transparent'});svg.appendChild(hit);
+ const move=ev=>{const r=svg.getBoundingClientRect(),px=(ev.clientX-r.left)*W/r.width;const t=ts.reduce((a,b)=>Math.abs(X(b)-px)<Math.abs(X(a)-px)?b:a);
+  rule.setAttribute('x1',X(t));rule.setAttribute('x2',X(t));rule.setAttribute('opacity',1);tip.replaceChildren();
+  const d=document.createElement('div');d.className='sub';d.textContent=new Date(t).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});tip.appendChild(d);
+  h.filter(r=>r.t===t).sort((a,b)=>a.price-b.price).slice(0,8).forEach(r=>{const ln=document.createElement('div'),i=document.createElement('i');i.style.cssText='display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:'+col(r.store);ln.append(i,r.label+': '+money(r.price));tip.appendChild(ln);});
+  tip.hidden=false;const left=X(t)/W*r.width+12;tip.style.left=Math.max(0,Math.min(r.width-tip.offsetWidth,left))+'px';tip.style.top=(lg.offsetHeight+8)+'px';};
+ hit.addEventListener('pointermove',move);hit.addEventListener('pointerdown',move);hit.addEventListener('pointerleave',()=>{tip.hidden=true;rule.setAttribute('opacity',0);});
+ box.appendChild(svg);box.appendChild(tip);}
+function render(){prep();summary();table();chart();}
+async function refresh(){try{D=await Bridge.load();render();}catch(e){snap.textContent='Could not load data: '+e;}}
+window.onCheckDone=()=>{check.disabled=false;check.textContent='Check prices now';refresh();};
+window.onCheckProgress=(t)=>{snap.textContent=t;};
+check.onclick=async()=>{check.disabled=true;check.textContent='Checking…';snap.textContent='Checking 14 listings, this can take a minute…';
+ try{const r=await Bridge.check();if(r!==null)window.onCheckDone();}catch(e){snap.textContent='Check failed: '+e;check.disabled=false;check.textContent='Check prices now';}};
+document.getElementById('store').onchange=e=>{store=e.target.value;chart();table();};
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(chart,150);});
+if(!window.Android) setInterval(()=>fetch('/api/ping',{method:'POST'}).catch(()=>{}),20000);
+refresh();
+</script></body></html>
